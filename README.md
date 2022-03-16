@@ -23,11 +23,16 @@ Funtionelt kan applikationen:
   - Man kan se på index.jsp hvordan man kan udnytte om en bruger er logget på eller ej.
   - Hvis man indtaster ugyldige data under indlogning, bliver man sendt til en en fejlside.
 
-Du skal gøre følgende for at få webapplikationen i lufte:
+## Du skal gøre følgende for at få webapplikationen i luften:
+
 1. Først skal du clone projektet eller downloade en zip-fil med projektet til din arbejdsstation.
 2. Dernæst skal du åbne Workbench og køre disse to scripts:
    1. resources/bibliotek.sql
    2. resources/create_test_database.sql
 3. Du skal evt. ændre kodeord til databasen i projektet. Det gøres i filerne: `/persistence/ConnectionPool` i linie 14 og 15. Du skal også ændre i testfilen til begge datamappere.
-4. Til sidst skal du lave en Tomcat konfiguration.
-5. Nu skulle du gerne kunne bygge og køre projektet
+4. Til sidst skal du lave en Tomcat konfiguration. Dvs, 
+   1. klik på "Add Configuration ..."
+   2. Klik på "+" og  vælg "Tomcat Server Local".
+   3. Klik på "Fix knappen"
+   4. Vælg war-exploded som deployment type
+   5. Nu kan du klikke på den grønne play-knap for at bygge og køre projektet.
