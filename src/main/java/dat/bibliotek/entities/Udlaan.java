@@ -1,14 +1,14 @@
 package dat.bibliotek.entities;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Udlaan
 {
     private int bog_id;
     private int laaner_id;
-    private LocalDate dato;
+    private Date dato;
 
-    public Udlaan(int bog_id, int laaner_id, LocalDate dato)
+    public Udlaan(int bog_id, int laaner_id, Date dato)
     {
         this.bog_id = bog_id;
         this.laaner_id = laaner_id;
@@ -35,12 +35,12 @@ public class Udlaan
         this.laaner_id = laaner_id;
     }
 
-    public LocalDate getDato()
+    public Date getDato()
     {
         return dato;
     }
 
-    public void setDato(LocalDate dato)
+    public void setDato(Date dato)
     {
         this.dato = dato;
     }

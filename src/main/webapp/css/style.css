@@ -1,12 +1,14 @@
 /* CSS stylesheet til bibliotek */
 
-table, table td {
+table {
+    border-collapse: collapse;
     border: 1px solid silver;
     padding:15px;
 }
 
-table {
-    border-collapse: collapse;
+th, td {
+    border: 1px solid silver;
+    padding:15px;
 }
 
 
