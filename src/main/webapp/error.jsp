@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page errorPage="error.jsp" isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +20,8 @@
     <p>Den er helt gal. Vi ved ikke hvordan du er havnet her. Så kontakt bibliotekaren.</p>
 </c:if>
 
-<p>Hop tilbage til <a href="${pageContext.request.contextPath}/index.jsp">Forsiden</a> her,
- eller prøv at <a href="${pageContext.request.contextPath}/login.jsp">logge</a> på igen.</p>
+<p>Hop tilbage til <a href="index.jsp">Forsiden</a> her,
+ eller prøv at <a href="login.jsp">logge</a> på igen.</p>
 
 </body>
 </html>
