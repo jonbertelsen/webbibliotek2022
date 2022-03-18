@@ -1,5 +1,7 @@
 package dat.bibliotek.entities;
 
+import java.util.Objects;
+
 public class Bruger
 {
     private String email;
@@ -51,5 +53,21 @@ public class Bruger
     public void setRolle(String rolle)
     {
         this.rolle = rolle;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof Bruger)) return false;
+        Bruger bruger = (Bruger) o;
+        return getEmail().equals(bruger.getEmail()) && getKodeord().equals(bruger.getKodeord()) &&
+                getRolle().equals(bruger.getRolle());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getEmail(), getKodeord(), getRolle());
     }
 }

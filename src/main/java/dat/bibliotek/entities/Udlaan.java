@@ -1,6 +1,7 @@
 package dat.bibliotek.entities;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class Udlaan
 {
@@ -53,5 +54,20 @@ public class Udlaan
                 ", laaner_id=" + laaner_id +
                 ", dato=" + dato +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof Udlaan)) return false;
+        Udlaan udlaan = (Udlaan) o;
+        return getBog_id() == udlaan.getBog_id() && getLaaner_id() == udlaan.getLaaner_id() && getDato().equals(udlaan.getDato());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getBog_id(), getLaaner_id(), getDato());
     }
 }

@@ -1,6 +1,7 @@
 package dat.bibliotek.dtos;
 
 import java.sql.Date;
+import java.util.Objects;
 
 public class UdlaanDTO
 {
@@ -94,5 +95,20 @@ public class UdlaanDTO
     public String getForfatterNavn()
     {
         return forfatterNavn;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof UdlaanDTO)) return false;
+        UdlaanDTO udlaanDTO = (UdlaanDTO) o;
+        return getForfatter_id() == udlaanDTO.getForfatter_id() && getBogId() == udlaanDTO.getBogId() && getLaanerId() == udlaanDTO.getLaanerId() && getPostnr() == udlaanDTO.getPostnr() && getUdgivelsesaar() == udlaanDTO.getUdgivelsesaar() && getLaanerNavn().equals(udlaanDTO.getLaanerNavn()) && getAdresse().equals(udlaanDTO.getAdresse()) && getDato().equals(udlaanDTO.getDato()) && getTitel().equals(udlaanDTO.getTitel()) && getForfatterNavn().equals(udlaanDTO.getForfatterNavn());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getForfatter_id(), getBogId(), getLaanerId(), getLaanerNavn(), getAdresse(), getPostnr(), getDato(), getTitel(), getUdgivelsesaar(), getForfatterNavn());
     }
 }

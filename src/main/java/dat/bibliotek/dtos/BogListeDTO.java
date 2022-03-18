@@ -1,5 +1,7 @@
 package dat.bibliotek.dtos;
 
+import java.util.Objects;
+
 public class BogListeDTO
 {
     private int bogId;
@@ -52,5 +54,20 @@ public class BogListeDTO
                 ", forfatterId=" + forfatterId +
                 ", forfatterNavn=" + forfatterNavn +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof BogListeDTO)) return false;
+        BogListeDTO that = (BogListeDTO) o;
+        return getBogId() == that.getBogId() && getUdgivelsesaar() == that.getUdgivelsesaar() && getForfatterId() == that.getForfatterId() && getTitel().equals(that.getTitel()) && getForfatterNavn().equals(that.getForfatterNavn());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getBogId(), getTitel(), getUdgivelsesaar(), getForfatterId(), getForfatterNavn());
     }
 }

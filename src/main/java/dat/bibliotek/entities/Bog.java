@@ -14,6 +14,14 @@ public class Bog
         this.forfatter_id = forfatter_id;
     }
 
+    public Bog(int bog_id, String titel, int udgivelsesaar, int forfatter_id)
+    {
+        this.bog_id = bog_id;
+        this.titel = titel;
+        this.udgivelsesaar = udgivelsesaar;
+        this.forfatter_id = forfatter_id;
+    }
+
     public int getBog_id()
     {
         return bog_id;

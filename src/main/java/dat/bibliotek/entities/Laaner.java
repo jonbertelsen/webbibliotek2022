@@ -1,5 +1,7 @@
 package dat.bibliotek.entities;
 
+import java.util.Objects;
+
 public class Laaner
 {
     private int laaner_id;
@@ -85,5 +87,20 @@ public class Laaner
     public void setBy(String by)
     {
         this.by = by;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof Laaner)) return false;
+        Laaner laaner = (Laaner) o;
+        return getLaaner_id() == laaner.getLaaner_id() && getPostnummer() == laaner.getPostnummer() && getNavn().equals(laaner.getNavn()) && getAdresse().equals(laaner.getAdresse()) && getBy().equals(laaner.getBy());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(getLaaner_id(), getNavn(), getAdresse(), getPostnummer(), getBy());
     }
 }
