@@ -15,6 +15,8 @@ public class Bruger
         this.rolle = rolle;
     }
 
+
+
     @Override
     public String toString()
     {

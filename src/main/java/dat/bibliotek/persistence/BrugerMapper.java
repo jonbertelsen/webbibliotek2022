@@ -3,10 +3,7 @@ package dat.bibliotek.persistence;
 import dat.bibliotek.entities.Bruger;
 import dat.bibliotek.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,9 +49,33 @@ public class BrugerMapper implements IBrugerMapper
     }
 
     @Override
-    public void opretBruger(String email, String kodeord, String rolle) throws DatabaseException
+    public Bruger opretBruger(String email, String kodeord, String rolle) throws DatabaseException
     {
-        // TODO: skal kodes
+        Logger.getLogger("web").log(Level.INFO, "");
+        Bruger bruger;
+        String sql = "insert into bruger (email, kodeord, rolle) values (?,?,?)";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setString(1, email);
+                ps.setString(2, kodeord);
+                ps.setString(3, rolle);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1)
+                {
+                    bruger = new Bruger(email, kodeord, rolle);
+                } else
+                {
+                    throw new DatabaseException("Brugeren med email = " + email + " kunne ikke oprettes i databasen");
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Kunne ikke indsætte bruger i databasen");
+        }
+        return bruger;
     }
 
 

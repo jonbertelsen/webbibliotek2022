@@ -76,7 +76,13 @@ class BrugerMapperTest
     }
 
     @Test
-    void opretBruger()
+    void opretBruger() throws DatabaseException
     {
+        Bruger nyBruger = brugerMapper.opretBruger("ole@ole.dk", "1234", "laaner");
+        Bruger logPaaBruger = brugerMapper.login("ole@ole.dk","1234");
+        Bruger forventetBruger = new Bruger("ole@ole.dk", "1234", "laaner");
+        assertEquals(forventetBruger, nyBruger);
+        assertEquals(forventetBruger, logPaaBruger);
+
     }
 }
