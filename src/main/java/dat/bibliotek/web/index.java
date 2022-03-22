@@ -39,6 +39,8 @@ public class index extends HttpServlet
         catch (DatabaseException e)
         {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage());
+            request.setAttribute("fejlbesked", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         request.setAttribute("bogliste", bogListeDTOList);
         request.getRequestDispatcher("WEB-INF/bogliste.jsp").forward(request, response);

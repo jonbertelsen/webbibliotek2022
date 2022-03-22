@@ -1,14 +1,11 @@
 package dat.bibliotek.web;
 
 import dat.bibliotek.config.ApplicationStart;
-import dat.bibliotek.dtos.BogListeDTO;
 import dat.bibliotek.entities.Bruger;
 import dat.bibliotek.exceptions.DatabaseException;
-import dat.bibliotek.persistence.BiblioteksMapper;
 import dat.bibliotek.persistence.BrugerMapper;
 import dat.bibliotek.persistence.ConnectionPool;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

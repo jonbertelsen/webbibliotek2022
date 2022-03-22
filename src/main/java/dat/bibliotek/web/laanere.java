@@ -1,7 +1,6 @@
 package dat.bibliotek.web;
 
 import dat.bibliotek.config.ApplicationStart;
-import dat.bibliotek.dtos.BogListeDTO;
 import dat.bibliotek.entities.Laaner;
 import dat.bibliotek.exceptions.DatabaseException;
 import dat.bibliotek.persistence.BiblioteksMapper;
@@ -40,6 +39,8 @@ public class laanere extends HttpServlet
         catch (DatabaseException e)
         {
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage());
+            request.setAttribute("fejlbesked", e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
         request.setAttribute("laanerliste", laanerList);
         request.getRequestDispatcher("WEB-INF/laanere.jsp").forward(request, response);
