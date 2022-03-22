@@ -13,11 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dat.bibliotek.persistence.ConnectionPool;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-@WebServlet(name = "index", urlPatterns = {"/bogliste"} )
-public class index extends HttpServlet
+@WebServlet(name = "bogliste", urlPatterns = {"/bogliste"} )
+public class bogliste extends HttpServlet
 {
     private ConnectionPool connectionPool;
 
