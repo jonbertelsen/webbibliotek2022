@@ -34,7 +34,7 @@ public class login extends HttpServlet
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         // Man burde ikke havne her med et GET-request, så derfor sende man tilbage til forsiden
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("bogliste.jsp");
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
@@ -52,7 +52,7 @@ public class login extends HttpServlet
             bruger = brugerMapper.login(email, kodeord);
             session = request.getSession();
             session.setAttribute("bruger", bruger); // sætter session variabel
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("bogliste.jsp").forward(request, response);
         }
         catch (DatabaseException e)
         {
