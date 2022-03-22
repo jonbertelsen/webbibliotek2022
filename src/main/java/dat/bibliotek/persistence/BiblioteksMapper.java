@@ -130,7 +130,7 @@ public class BiblioteksMapper implements IBiblioteksMapper
         Logger.getLogger("web").log(Level.INFO, "");
         List<UdlaanDTO> hentAlleUdlaanDTOList = new ArrayList<>();
 
-        String sql = "select forfatter_i, bog_id, laaner_id, l.navn as laaner_navn, " +
+        String sql = "select forfatter_id, bog_id, laaner_id, l.navn as laaner_navn, " +
                 "adresse, postnr, dato, titel, udgivelsesaar, f.navn as forfatter_navn " +
                 "from laaner l " +
                 "inner join udlaan using(laaner_id) inner join bog " +

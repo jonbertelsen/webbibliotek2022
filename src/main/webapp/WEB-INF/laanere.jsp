@@ -16,15 +16,26 @@
     <jsp:body>
 
         <table class="table table-striped">
-            <c:forEach var="laaner" items="${requestScope.laanerliste}">
+            <thead>
                 <tr>
-                    <td>${laaner.laaner_id}</td>
-                    <td>${laaner.navn}</td>
-                    <td>${laaner.adresse}</td>
-                    <td>${laaner.postnummer}</td>
-                    <td>${laaner.by}</td>
+                    <th>Låner Id</th>
+                    <th>Navn</th>
+                    <th>Adresse</th>
+                    <th>Postnr</th>
+                    <th>By</th>
                 </tr>
-            </c:forEach>
+            </thead>
+            <tbody>
+                <c:forEach var="laaner" items="${requestScope.laanerliste}">
+                    <tr>
+                        <td>${laaner.laaner_id}</td>
+                        <td>${laaner.navn}</td>
+                        <td>${laaner.adresse}</td>
+                        <td>${laaner.postnummer}</td>
+                        <td>${laaner.by}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
         </table>
 
     </jsp:body>

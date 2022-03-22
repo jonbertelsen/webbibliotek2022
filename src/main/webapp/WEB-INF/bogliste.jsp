@@ -15,7 +15,17 @@
 
     <jsp:body>
 
-        <table  class="table table-striped">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Bog Id</th>
+                <th>Titel</th>
+                <th>Forfatter navn</th>
+                <th>Udgivelsesår</th>
+            </tr>
+
+            </thead>
+            <tbody>
             <c:forEach var="bog" items="${requestScope.bogliste}">
                 <tr>
                     <td>${bog.bogId}</td>
@@ -24,6 +34,7 @@
                     <td>${bog.udgivelsesaar}</td>
                 </tr>
             </c:forEach>
+            </tbody>
         </table>
     </jsp:body>
 </t:pagetemplate>

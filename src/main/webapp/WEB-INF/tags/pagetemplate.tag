@@ -32,7 +32,12 @@
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/bogliste">Bøger</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/laanere">Lånere</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/udlaan">Udlån</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                    <c:if test="${sessionScope.bruger == null }">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                    </c:if>
+                    <c:if test="${sessionScope.bruger != null }">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log ud</a>
+                    </c:if>
                 </div>
             </div>
         </div>

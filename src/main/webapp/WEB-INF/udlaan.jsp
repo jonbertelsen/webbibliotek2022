@@ -18,15 +18,15 @@
         <table  class="table table-striped">
             <thead>
             <tr>
-                <th>bogId</th>
-                <th>laanerId</th>
-                <th>laanerNavn</th>
-                <th>adresse</th>
-                <th>postnr</th>
-                <th>titel</th>
-                <th>udgivelsesaar</th>
-                <th>forfatter_id</th>
-                <th>forfatter_navn</th>
+                <th>Bog Id</th>
+                <th>Låner Id</th>
+                <th>Navn</th>
+                <th>Adresse</th>
+                <th>Postnr</th>
+                <th>Bogtitel</th>
+                <th>Udgivelsesaar</th>
+                <th>Forfatter Id</th>
+                <th>Forfatter navn</th>
             </tr>
             </thead>
             <tbody>
