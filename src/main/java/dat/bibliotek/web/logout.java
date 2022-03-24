@@ -31,7 +31,7 @@ public class logout extends HttpServlet
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.invalidate();
-        response.sendRedirect("bogliste.jsp");
+        response.sendRedirect("index.jsp");
     }
 
     public void destroy()
