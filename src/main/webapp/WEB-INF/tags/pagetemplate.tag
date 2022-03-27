@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/bogliste">Bøger</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/laanere">Lånere</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/laaner">Lånere</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/udlaan">Udlån</a>
                     <c:if test="${sessionScope.bruger == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>

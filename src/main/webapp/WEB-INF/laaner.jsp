@@ -15,17 +15,20 @@
 
     <jsp:body>
 
-        <table class="table table-striped">
-            <thead>
+        <form action="laaner" method="post">
+            <input type="hidden" name="command" value="fjernrediger"/>
+            <table class="table table-striped">
+                <thead>
                 <tr>
                     <th>Låner Id</th>
                     <th>Navn</th>
                     <th>Adresse</th>
                     <th>Postnr</th>
                     <th>By</th>
+                    <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <c:forEach var="laaner" items="${requestScope.laanerliste}">
                     <tr>
                         <td>${laaner.laaner_id}</td>
@@ -33,10 +36,20 @@
                         <td>${laaner.adresse}</td>
                         <td>${laaner.postnummer}</td>
                         <td>${laaner.by}</td>
+                        <td>
+                            <button name="fjern" value="${laaner.laaner_id}">fjern</button>
+                            <button name="rediger" value="${laaner.laaner_id}">rediger</button>
+                        </td>
                     </tr>
                 </c:forEach>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </form>
+
+        <form action="laaner" method="post">
+            <input type="hidden" name="command" value="opretlaanerside"/>
+            <input type="submit" value="Opret ny låner">
+        </form>
 
     </jsp:body>
 </t:pagetemplate>

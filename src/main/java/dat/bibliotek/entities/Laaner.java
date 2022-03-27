@@ -27,6 +27,13 @@ public class Laaner
         this.by = by;
     }
 
+    public Laaner(String navn, String adresse, int postnummer)
+    {
+        this.navn = navn;
+        this.adresse = adresse;
+        this.postnummer = postnummer;
+    }
+
     public int getLaaner_id()
     {
         return laaner_id;
