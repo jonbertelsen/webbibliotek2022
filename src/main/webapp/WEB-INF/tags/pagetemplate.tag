@@ -29,9 +29,9 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/bogliste">Bøger</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/laanere">Lånere</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/udlaan">Udlån</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Side 1</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Side 2</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Side 3</a>
                     <c:if test="${sessionScope.bruger == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>

@@ -1,5 +1,5 @@
-# Biblioteks-web-applikation
-## Demo-app på 2. semester forår 2022
+# default-web-applikation
+## Startkode på 2. semester forår 2022
 
 Der er med vilje ikke refaktoreret i bund, og der er ikke lavet design, men applikationen indeholder:
 
@@ -13,10 +13,7 @@ Der er med vilje ikke refaktoreret i bund, og der er ikke lavet design, men appl
 
 Funtionelt kan applikationen:
 
-- Vise en forside med links til undersider
-- Vise alle lånere
-- Vise alle bøger med detaljer
-- Se alle udlån
+- Vise en forside med links til undersider, som endnu ikke er lavet
 - Logge en bruger på. Der findes to brugere i databasen.
   1. a@a.dk med kodeord: 1234 (rolle: laaner)
   2. b@b.dk med kodeord: 1234 (rolle: admin)
@@ -26,11 +23,10 @@ Funtionelt kan applikationen:
 ## Du skal gøre følgende for at få webapplikationen i luften:
 
 1. Først skal du clone projektet eller downloade en zip-fil med projektet til din arbejdsstation.
-2. Dernæst skal du åbne Workbench og køre disse to scripts:
-   1. resources/bibliotek.sql
-   2. resources/create_test_database.sql
-3. Du skal evt. ændre kodeord til databasen i projektet. Det gøres i filerne: `/persistence/ConnectionPool` i linie 14 og 15. Du skal også ændre i testfilen til begge datamappere.
-4. Til sidst skal du lave en Tomcat konfiguration. Dvs, 
+2. Dernæst skal du åbne Workbench og lave en database til projektet med minimum en bruger-tabel.
+3. Lav en test-database, som har en kopi af den rigtige databases struktur.
+4. Du skal evt. ændre kodeord til databasen i projektet. Det gøres i filerne: `/persistence/ConnectionPool` i linie 14 og 15. Du skal også ændre i testfilen til begge datamappere.
+5. Til sidst skal du lave en Tomcat konfiguration. Dvs, 
    1. klik på "Add Configuration ..."
    2. Klik på "+" og  vælg "Tomcat Server Local".
    3. Klik på "Fix knappen"
