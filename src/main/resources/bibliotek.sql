@@ -147,7 +147,7 @@ INSERT INTO `postnummer` VALUES (7490,'Aulum'),(7500,'Hobro'),(8520,'Lystrup');
 UNLOCK TABLES;
 
 --
--- Table structure for table `udlaan`
+-- Table structure for table `Udlaan`
 --
 
 DROP TABLE IF EXISTS `udlaan`;
@@ -165,7 +165,7 @@ CREATE TABLE `udlaan` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `udlaan`
+-- Dumping data for table `Udlaan`
 --
 
 LOCK TABLES `udlaan` WRITE;

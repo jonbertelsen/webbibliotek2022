@@ -57,6 +57,38 @@ public class BiblioteksMapper implements IBiblioteksMapper
     }
 
     @Override
+    public Bog hentBogUdFraId(int bogId) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "bogId=" + bogId);
+        Bog bog = null;
+        String sql = "select * from bog where bog_id = ?";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, bogId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next())
+                {
+                    bogId = rs.getInt("bog_id");
+                    String titel = rs.getString("titel");
+                    int udgivelsesAar = rs.getInt("udgivelsesaar");
+                    int forfatterId = rs.getInt("forfatter_id");
+
+                    bog = new Bog(bogId, titel, udgivelsesAar, forfatterId);
+                } else
+                {
+                    throw new DatabaseException("Bog med bog_id = " + bogId + " findes ikke");
+                }
+            }
+        } catch (SQLException ex)
+        {
+            throw new DatabaseException("Bog med bog_id = " + bogId + " findes ikke");
+        }
+        return bog;
+    }
+
+    @Override
     public List<Laaner> hentAlleLaanere() throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
@@ -162,7 +194,7 @@ public class BiblioteksMapper implements IBiblioteksMapper
         }
         catch (SQLException ex)
         {
-            throw new DatabaseException(ex, "Fejl under indlæsning af udlaan fra databasen");
+            throw new DatabaseException(ex, "Fejl under indlæsning af Udlaan fra databasen");
         }
         return hentAlleUdlaanDTOList;
     }
@@ -205,6 +237,46 @@ public class BiblioteksMapper implements IBiblioteksMapper
             throw new DatabaseException(ex, "Kunne ikke indsætte låner i databasen");
         }
         return laaner;
+    }
+
+    @Override
+    public Bog opretNyBog(Bog bog) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        int newId = 0;
+        String sql = "insert into bog (titel, udgivelsesaar, forfatter_id) values (?,?,?)";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+                ps.setString(1, bog.getTitel());
+                ps.setInt(2, bog.getUdgivelsesaar());
+                ps.setInt(3, bog.getForfatter_id());
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1)
+                {
+                    result = true;
+                } else
+                {
+                    throw new DatabaseException("bog med titel = " + bog.getTitel() + " kunne ikke oprettes i databasen");
+                }
+                ResultSet idResultset = ps.getGeneratedKeys();
+                if (idResultset.next())
+                {
+                    newId = idResultset.getInt(1);
+                    bog.setBog_id(newId);
+                } else
+                {
+                    bog = null;
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Kunne ikke indsætte bog i databasen");
+        }
+        return bog;
     }
 
     @Override
@@ -269,6 +341,34 @@ public class BiblioteksMapper implements IBiblioteksMapper
         {
             throw new DatabaseException(ex, "Udlån med laaner_id = " + laanerId + " og " +
                     "bog_id = " + bogId + " kunne ikke fjernes");
+        }
+        return result;
+    }
+
+    @Override
+    public boolean fjernBog(int bogId) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+        boolean result = false;
+        String sql = "delete from bog where bog_id = ?";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, bogId);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected == 1)
+                {
+                    result = true;
+                } else
+                {
+                    throw new DatabaseException("Bog med bogId = " + bogId + " kunne ikke fjernes");
+                }
+            }
+        }
+        catch (SQLException ex)
+        {
+            throw new DatabaseException("Bog med bogId = " + bogId + " kunne ikke fjernes");
         }
         return result;
     }

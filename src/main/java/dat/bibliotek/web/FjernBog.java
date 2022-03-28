@@ -1,7 +1,6 @@
 package dat.bibliotek.web;
 
 import dat.bibliotek.config.ApplicationStart;
-import dat.bibliotek.entities.Laaner;
 import dat.bibliotek.exceptions.DatabaseException;
 import dat.bibliotek.persistence.BiblioteksMapper;
 import dat.bibliotek.persistence.ConnectionPool;
@@ -12,12 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(name = "laanere", urlPatterns = {"/laanere"} )
-public class laanere extends HttpServlet
+@WebServlet(name = "fjernbog", urlPatterns = {"/fjernbog"} )
+public class FjernBog extends HttpServlet
 {
     private ConnectionPool connectionPool;
 
@@ -27,14 +25,15 @@ public class laanere extends HttpServlet
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        response.setContentType("text/html");
+        String idString = request.getParameter("fjern");
+        int bogId = Integer.parseInt(idString);
         BiblioteksMapper biblioteksMapper = new BiblioteksMapper(connectionPool);
-        List<Laaner> laanerList = null;
         try
         {
-            laanerList = biblioteksMapper.hentAlleLaanere();
+            biblioteksMapper.fjernBog(bogId);
         }
         catch (DatabaseException e)
         {
@@ -42,12 +41,7 @@ public class laanere extends HttpServlet
             request.setAttribute("fejlbesked", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-        request.setAttribute("laanerliste", laanerList);
-        request.getRequestDispatcher("WEB-INF/laanere.jsp").forward(request, response);
-    }
-
-    public void destroy()
-    {
+        request.getRequestDispatcher("bogliste").forward(request, response);
 
     }
 }

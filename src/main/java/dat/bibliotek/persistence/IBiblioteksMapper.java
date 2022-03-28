@@ -15,6 +15,9 @@ public interface IBiblioteksMapper
     // Find en låner ud fra et specifikt laaner_id.
     public Laaner hentLaanerUdFraId(int laaner_id) throws DatabaseException;
 
+    // Find en bog ud fra et specifikt bog_id.
+    public Bog hentBogUdFraId(int bog_id) throws DatabaseException;
+
     // Find alle lånere, og vis deres data inklusive postnummer og by.
     public List<Laaner> hentAlleLaanere() throws DatabaseException;
 
@@ -27,11 +30,17 @@ public interface IBiblioteksMapper
     // Indsæt en nyt låner (insert)
     public Laaner opretNyLaaner(Laaner laaner) throws DatabaseException;
 
+    // Indsæt en nyt bog (insert)
+    public Bog opretNyBog(Bog bog) throws DatabaseException;
+
     // Opret et nyt udlån af en bog (insert)
     public boolean opretNytUdlaan(Udlaan udlaan) throws DatabaseException;
 
     // Fjern et udlån (delete)
     public boolean fjernUdlaan(int laaner_id, int bog_id) throws DatabaseException;
+
+    // Fjern en bog (delete)
+    public boolean fjernBog(int bog_id) throws DatabaseException;
 
     // Rediger en bogtitel (update)
     public boolean opdaterBog(Bog bog) throws DatabaseException;

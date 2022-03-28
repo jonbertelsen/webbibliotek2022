@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import dat.bibliotek.persistence.ConnectionPool;
 
 @WebServlet(name = "bogliste", urlPatterns = {"/bogliste"} )
-public class bogliste extends HttpServlet
+public class Bogliste extends HttpServlet
 {
     private ConnectionPool connectionPool;
 
@@ -25,9 +25,16 @@ public class bogliste extends HttpServlet
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        doGet(request, response);
+    }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         response.setContentType("text/html");
+
         BiblioteksMapper biblioteksMapper = new BiblioteksMapper(connectionPool);
         List<BogListeDTO> bogListeDTOList = null;
         try
