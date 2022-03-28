@@ -54,6 +54,8 @@ public class Bog
         this.forfatter_id = forfatter_id;
     }
 
+
+
     @Override
     public String toString()
     {

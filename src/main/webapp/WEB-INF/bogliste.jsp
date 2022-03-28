@@ -15,6 +15,7 @@
 <table>
     <c:forEach var="bog" items="${requestScope.bogliste}">
         <tr>
+            <%   %>
             <td>${bog.bogId}</td>
             <td>${bog.titel}</td>
             <td>${bog.forfatterNavn}</td>
