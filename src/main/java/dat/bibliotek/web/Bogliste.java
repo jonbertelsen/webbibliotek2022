@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import dat.bibliotek.persistence.ConnectionPool;
+import dat.bibliotek.services.AccessService;
 
 @WebServlet(name = "bogliste", urlPatterns = {"/bogliste"} )
 public class Bogliste extends HttpServlet
@@ -47,6 +48,7 @@ public class Bogliste extends HttpServlet
             request.setAttribute("fejlbesked", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
+        request.setAttribute("isRoleAllowed", AccessService.isRoleAllowed("admin", request ));
         request.setAttribute("bogliste", bogListeDTOList);
         request.getRequestDispatcher("WEB-INF/bogliste.jsp").forward(request, response);
     }

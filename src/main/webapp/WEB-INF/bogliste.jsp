@@ -34,8 +34,10 @@
                         <td>${bog.forfatterNavn}</td>
                         <td>${bog.udgivelsesaar}</td>
                         <td>
-                            <button name="fjern" value="${bog.bogId}" formaction="fjernbog">fjern</button>
-                            <button name="rediger" value="${bog.bogId}" formaction="redigerbog">rediger</button>
+                            <c:if test="${requestScope.isRoleAllowed}">
+                                <button name="fjern" value="${bog.bogId}" formaction="fjernbog">fjern</button>
+                                <button name="rediger" value="${bog.bogId}" formaction="redigerbog">rediger</button>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>
