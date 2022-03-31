@@ -35,7 +35,8 @@ public class BrugerMapper implements IBrugerMapper
                 if (rs.next())
                 {
                     String rolle = rs.getString("rolle");
-                    bruger = new Bruger(email, kodeord, rolle);
+                    int laaner_id = rs.getInt("laaner_id");
+                    bruger = new Bruger(email, kodeord, rolle, laaner_id);
                 } else
                 {
                     throw new DatabaseException("Fejl i brugernavn eller kodeord");

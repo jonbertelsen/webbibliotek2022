@@ -7,6 +7,25 @@ public class Bruger
     private String email;
     private String kodeord;
     private String rolle;
+    private int laanerId;
+
+    public int getLaanerId()
+    {
+        return laanerId;
+    }
+
+    public void setLaanerId(int laanerId)
+    {
+        this.laanerId = laanerId;
+    }
+
+    public Bruger(String email, String kodeord, String rolle, int laanerId)
+    {
+        this.email = email;
+        this.kodeord = kodeord;
+        this.rolle = rolle;
+        this.laanerId = laanerId;
+    }
 
     public Bruger(String brugerNavn, String kodeord, String rolle)
     {
@@ -15,15 +34,14 @@ public class Bruger
         this.rolle = rolle;
     }
 
-
-
     @Override
     public String toString()
     {
         return "Bruger{" +
-                "brugerNavn='" + email + '\'' +
+                "email='" + email + '\'' +
                 ", kodeord='" + kodeord + '\'' +
                 ", rolle='" + rolle + '\'' +
+                ", laanerId=" + laanerId +
                 '}';
     }
 
@@ -63,13 +81,12 @@ public class Bruger
         if (this == o) return true;
         if (!(o instanceof Bruger)) return false;
         Bruger bruger = (Bruger) o;
-        return getEmail().equals(bruger.getEmail()) && getKodeord().equals(bruger.getKodeord()) &&
-                getRolle().equals(bruger.getRolle());
+        return getLaanerId() == bruger.getLaanerId() && getEmail().equals(bruger.getEmail()) && getKodeord().equals(bruger.getKodeord()) && getRolle().equals(bruger.getRolle());
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(getEmail(), getKodeord(), getRolle());
+        return Objects.hash(getEmail(), getKodeord(), getRolle(), getLaanerId());
     }
 }

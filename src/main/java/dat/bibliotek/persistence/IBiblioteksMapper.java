@@ -15,6 +15,8 @@ public interface IBiblioteksMapper
     // Find en låner ud fra et specifikt laaner_id.
     public Laaner hentLaanerUdFraId(int laaner_id) throws DatabaseException;
 
+    Bog hentBogUdFraId(int bogId) throws DatabaseException;
+
     // Find alle lånere, og vis deres data inklusive postnummer og by.
     public List<Laaner> hentAlleLaanere() throws DatabaseException;
 

@@ -57,6 +57,37 @@ public class BiblioteksMapper implements IBiblioteksMapper
     }
 
     @Override
+    public Bog hentBogUdFraId(int bogId) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "bogId=" + bogId);
+        Bog bog = null;
+        String sql = "select * from bog where bog_id = ?";
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, bogId);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next())
+                {
+                    bogId = rs.getInt("bog_id");
+                    String titel = rs.getString("titel");
+                    int udgivelsesaar = rs.getInt("udgivelsesaar");
+                    int forfatterId = rs.getInt("forfatter_id");
+                    bog = new Bog(bogId, titel, udgivelsesaar, forfatterId);
+                } else
+                {
+                    throw new DatabaseException("Bog med bog_id = " + bogId + " findes ikke");
+                }
+            }
+        } catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Fejl i databaseforespørgsel for bog_id = " + bogId);
+        }
+        return bog;
+    }
+
+    @Override
     public List<Laaner> hentAlleLaanere() throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
