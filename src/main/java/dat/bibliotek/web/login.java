@@ -52,7 +52,7 @@ public class login extends HttpServlet
             bruger = brugerMapper.login(email, kodeord);
             session = request.getSession();
             session.setAttribute("bruger", bruger); // sætter session variabel
-            request.getRequestDispatcher("bogliste.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/bogliste.jsp").forward(request, response);
         }
         catch (DatabaseException e)
         {
